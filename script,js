@@ -1,0 +1,17 @@
+// Sélectionner tous les éléments avec la classe "degrade"
+const elements = document.querySelectorAll('.degrade');
+
+// Fonction pour appliquer un dégradé animé
+function moveGradient() {
+    elements.forEach(element => {
+        let time = Date.now();  // Utilisation du temps pour rendre l'animation continue
+        let gradientPosition = (time / 30) % 200;  // Déplace le dégradé lentement
+        element.style.backgroundPosition = `${gradientPosition}% 50%`;  // Déplace le dégradé de droite à gauche
+    });
+
+    // Rappeler cette fonction pour l'animation continue
+    requestAnimationFrame(moveGradient);
+}
+
+// Lancer l'animation dès que le script est chargé
+moveGradient();
