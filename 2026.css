@@ -1,37 +1,29 @@
 /* Défilement fluide */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'contenu';
+    font-family: 'contenu', sans-serif;
 }
 
-/* polices */
-h1 {
+/* Polices */
+h1, h2, h3, h4 {
     font-family: 'Titres', arial, sans-serif;
-    font-size: 2rem;
 }
 
-h2 {
-    font-family: 'Titres', arial, sans-serif;
-    font-size: 2rem;
-}
-
-h3 {
-    font-family: 'Titres', arial, sans-serif;
+h1, h2, h3 {
     font-size: 2rem;
 }
 
 h4 {
-    font-family: 'Titres', arial, sans-serif;
     font-size: 2.5rem;
     color: #0d0a38;
     margin-bottom: 0px;
     margin-top: 20px;
-    border-top: 0px;
 }
 
 p {
@@ -39,7 +31,7 @@ p {
     font-size: 1.5rem;
 }
 
-/* Header */
+/* header + nav */
 header {
     background-color: #0d0a38;
     padding: 10px;
@@ -47,53 +39,64 @@ header {
     align-items: center;
     color: white;
     height: 80px;
-    width: 100%;
-    margin: 0;  /* Enlève la marge par défaut */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Optionnel : ombre pour le header */
 }
 
-header img {
+header .logo {
     width: 200px;
     height: auto;
     margin-right: 20px;
+    display: block;
     filter: invert(100%);
 }
 
+header .langue {
+    width: 50px;
+    height: auto;
+}
+
 header h1 {
-    font-family: 'Titres', sans-serif;
+    font-family: 'Titres', arial, sans-serif;
     margin: 0;
     flex: 1;
-    font-size: 1.8em;
+    text-align: left;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+nav {
+    flex: 2;
+    text-align: right;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #0d0a38;
+    height: 40px;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 10px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: white;
     padding: 5px 10px;
-    font-size: 1.2rem;
+    display: block;
+    font-size: 1.5rem;
     font-family: contenu !important;
-    transition: transform 0.3s ease-in-out; /* Transition pour zoom */
+    transition: transform 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
-    transform: scale(1.2); /* Zoom sur l'élément au survol */
+    transform: scale(1.1);
 }
-
-/* Assurez-vous que les ul et li sont correctement définis */
-nav ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-nav ul li {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-}
-
-
 
 /* Bandeau (Hero) */
 .bandeau {
@@ -103,7 +106,7 @@ nav ul li {
     width: 100%;
     height: 600px;
     overflow: hidden;
-    margin-top: 0; /* Supprimer l'espace supplémentaire */
+    margin-top: 0;
 }
 
 .bandeau-img {
@@ -111,7 +114,7 @@ nav ul li {
     top: 0;
     left: 0;
     width: 100%;
-    height: 600px;
+    height: 100%;
     object-fit: cover;
     filter: brightness(0.7);
     transform: scale(1.1);
@@ -129,7 +132,7 @@ nav ul li {
     top: 0;
     left: 0;
     width: 100%;
-    height: 600px;
+    height: 100%;
     background: linear-gradient(135deg, rgba(13,10,56,0.5), rgba(174,174,190,0.5));
     mix-blend-mode: overlay;
 }
@@ -147,23 +150,6 @@ nav ul li {
 @keyframes slideIn {
     from { opacity: 0; transform: translateX(-50px); }
     to { opacity: 1; transform: translateX(0); }
-}
-
-.bandeau-texte h1 {
-    margin-bottom: 20px;
-    font-size: 3rem;
-    font-family: 'Titres', sans-serif;
-}
-
-.bandeau-contenu h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.bandeau-contenu p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
 }
 
 /* Sections avec offset pour header fixe */
@@ -206,8 +192,8 @@ nav ul li {
 
 .flip-card-front, .flip-card-back {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 220px;
+    height: 320px;
     backface-visibility: hidden;
     border-radius: 10px;
     overflow: hidden;
@@ -225,12 +211,12 @@ nav ul li {
     padding: 10px;
 }
 
-.flip-card-front img {
+.flip-card-front img,
+.flip-card-back img {
     width: 100%;
     height: 150px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
+    object-fit: contain;
+    background-color: white;
 }
 
 .flip-card-back {
@@ -245,7 +231,7 @@ nav ul li {
     padding: 20px;
 }
 
-/* Section Artistes (similaire à la galerie) */
+/* Section Artistes */
 .artists {
     display: flex;
     justify-content: center;
@@ -254,9 +240,42 @@ nav ul li {
     padding: 40px;
 }
 
-.artist-card {
-    width: 220px;
-    height: 320px;
+
+/* Programme Section */
+#programme {
+    padding: 40px;
+    background-color: #0d0a38;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.programme-container {
+    text-align: center;
+}
+
+.programme-item {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.programme-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color:#0d0a38;
+}
+
+.programme-item p {
+    font-size: 1.2rem;
+    color:#0d0a38;
 }
 
 /* Footer */
@@ -271,25 +290,23 @@ footer {
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
-    background-color: #ffffff;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #ffffff,0.5;
+    background-color: #ffffff;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #0d0a38;
     border-radius: 10px;
-    border: 3px solid #ffffff,0.5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #aeaebe;
 }
 
-/* police ecriture */
+/* Police d'écriture */
 @font-face {
     font-family: 'Titres';
     src: url('font/HV%20Weist%20Havanah%20Trial.ttf') format('truetype');
@@ -297,6 +314,5 @@ footer {
 
 @font-face {
     font-family: 'contenu';
-    src: url('font/Montserrat-VariableFont_wght.ttf');
+    src: url('font/Montserrat-VariableFont_wght.ttf') format('truetype');
 }
-
