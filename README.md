@@ -6,6 +6,9 @@ Ce dépôt contient un travail réalisé dans le cadre de la **SAE PPP (Projet P
 🏫 **Établissement :** IUT de Villetaneuse  
 📅 **Année :** 2024–2025
 
+🌐 **Lien vers le projet en ligne :**  
+🔗 [https://corblack.github.io/SAE-PPP](https://corblack.github.io/SAE-PPP)
+
 ---
 
 ## 🎯 Objectifs de la SAE
@@ -48,3 +51,5 @@ Travail réalisé par **Corblack** et les membres du groupe projet.
 Tous droits réservés © 2025.
 
 ---
+
+> 📌 Ce dépôt a une finalité académique. Toute réutilisation doit mentionner l’auteur.
